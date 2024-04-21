@@ -20,8 +20,8 @@ public class Generator {
             byte[] byteArray = byteArrayOutputStream.toByteArray();
             BufferedImage qrImage = ImageIO.read(new ByteArrayInputStream(byteArray));
 
-            int totalWidth = qrWidth + 2 * frameWidth;
-            int totalHeight = qrHeight + 2 * frameWidth + textHeight + 2 * margin;
+            int totalWidth = qrWidth + 2 * frameWidth; //pakeičiam 2 į 1
+            int totalHeight = qrHeight + 2 * frameWidth + textHeight + 2 * margin; //pakeičiam 2 į 1
 
             BufferedImage combined = new BufferedImage(totalWidth, totalHeight, BufferedImage.TYPE_INT_RGB);
             Graphics2D g = combined.createGraphics();
@@ -45,7 +45,7 @@ public class Generator {
             g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HBGR);
             FontMetrics fm = g.getFontMetrics();
             int textX = (totalWidth - fm.stringWidth(code)) / 2;
-            int textY = frameWidth + qrHeight + margin + fm.getAscent();
+            int textY = frameWidth + qrHeight + margin + fm.getAscent() / 4;
 
             g.drawString(code, textX, textY);
 

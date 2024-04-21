@@ -3,6 +3,8 @@ package lt.jono.qr_gen.utils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
+import javax.swing.*;
+
 public class DialogBoxHelper {
 
     public static void showQRGeneratedDialog() {
@@ -26,9 +28,10 @@ public class DialogBoxHelper {
     public static void qrConfigFileError() {
         showAlert("Klaida:" ,null,"Atsiprašau neina rasti config.properties failo arba jis sugadintas");
     }
-//    public static  void resolutionSelection(String message) {
-//        showAlert("Klaida:" ,message,"Resoliucijia: ");
-//    }
+
+    public static  void resolutionSelection() {
+       showAlert("Klaida:" ,null,"!!!!!! Nepasirinkta resoliucijia !!!!!!! ");
+   }
 
     private static void showAlert(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
