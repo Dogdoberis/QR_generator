@@ -6,43 +6,26 @@ import javafx.scene.control.ButtonType;
 public class DialogBoxHelper {
 
     public static void showQRGeneratedDialog() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("QR Kodai Sugeneruoti");
-        alert.setHeaderText(null);
-        alert.setContentText("QR kodai buvo sėkmingai sugeneruoti!");
-        ButtonType okButton = new ButtonType("Gerai");
-        alert.getButtonTypes().setAll(okButton);
-        alert.showAndWait();
+        showAlert("QR Kodai Sugeneruoti", null, "QR kodai buvo sėkmingai sugeneruoti!");
     }
-
 
     public static void numberSequenceError() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Klaida:");
-        alert.setHeaderText(null);
-        alert.setContentText("Pradžios skaičius negali būti didesnis už pabaigos skaičiu!");
-        ButtonType okButton = new ButtonType("Gerai");
-        alert.getButtonTypes().setAll(okButton);
-        alert.showAndWait();
+        showAlert("Klaida:", "KLAIDA", "Pradžios skaičius negali būti didesnis už pabaigos skaičiu!");
     }
-
 
     public static void numberError() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Klaida:");
-        alert.setHeaderText(null);
-        alert.setContentText("skaičius negali būti nulinis!");
-        ButtonType okButton = new ButtonType("Gerai");
-        alert.getButtonTypes().setAll(okButton);
-        alert.showAndWait();
+        showAlert("Klaida:", "KLAIDA", "skaičius negali būti nulinis!");
     }
 
-
     public static void numericalError() {
+        showAlert("Klaida:", "KALAIDA", "įvedėte ne skaičių!!");
+    }
+
+    private static void showAlert(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Klaida:");
-        alert.setHeaderText(null);
-        alert.setContentText("įvedėte ne skaičių!!");
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
         ButtonType okButton = new ButtonType("Gerai");
         alert.getButtonTypes().setAll(okButton);
         alert.showAndWait();
