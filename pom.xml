@@ -81,7 +81,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>lt.jono.qr_gen/lt.jono.qr_gen.QRCodeGenerator</mainClass>
+                            <mainClass>lt.jono.qr_gen/lt.jono.qr_gen.QRCodeCenerator</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
