@@ -8,6 +8,6 @@ module lt.jono.qr_gen {
     requires qrgen;
     requires itextpdf;
 
-    opens lt.jono.qr_gen to javafx.fxml;
+    opens lt.jono.qr_gen.controller to javafx.fxml;
     exports lt.jono.qr_gen;
 }
