@@ -23,6 +23,9 @@ public class DialogBoxHelper {
     public static void qrGeneratedError(String message) {
         showAlert("Klaida:" ,message,"Klaida kuriant QR kodą:");
     }
+    public static void qrConfigFileError() {
+        showAlert("Klaida:" ,null,"Atsiprašau neina rasti config.properties failo arba jis sugadintas");
+    }
 //    public static  void resolutionSelection(String message) {
 //        showAlert("Klaida:" ,message,"Resoliucijia: ");
 //    }

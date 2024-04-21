@@ -2,47 +2,15 @@ package lt.jono.qr_gen.generator;
 
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.Properties;
-
+import static lt.jono.qr_gen.generator.Config.*;
 import static lt.jono.qr_gen.utils.DialogBoxHelper.qrGeneratedError;
 
 public class Generator {
-    private static int frameWidth;
-    private static int qrWidth;
-    private static int qrHeight;
-    private static int margin;
-    private static int textHeight;
-    private static int arcWidth;
-    private static int arcHeight;
-    private static int fontSize;
-
-    static {
-        try {
-            InputStream input = Generator.class.getClassLoader().getResourceAsStream("config.properties");
-            if (input == null) {
-                System.out.println("Atsiprašau neina rasti config.properties failo");
-            }
-            Properties prop = new Properties();
-            prop.load(input);
-            frameWidth = Integer.parseInt(prop.getProperty("frameWidth"));
-            qrWidth = Integer.parseInt(prop.getProperty("qrWidth"));
-            qrHeight = Integer.parseInt(prop.getProperty("qrHeight"));
-            margin = Integer.parseInt(prop.getProperty("margin"));
-            textHeight = Integer.parseInt(prop.getProperty("textHeight"));
-            arcWidth = Integer.parseInt(prop.getProperty("arcWidth"));
-            arcHeight = Integer.parseInt(prop.getProperty("arcHeight"));
-            fontSize = Integer.parseInt(prop.getProperty("fontSize"));
-
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
 
 
     public static void generateQRCode(String series, int number) {

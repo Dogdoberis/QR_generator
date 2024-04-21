@@ -1,5 +1,6 @@
 package lt.jono.qr_gen.page;
 
+import lt.jono.qr_gen.controller.QRGenController;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -8,26 +9,27 @@ import com.itextpdf.text.Rectangle;
 import java.io.IOException;
 import java.util.List;
 
-public class
-AddQRCodeToPage {
-
+public class AddQRCodeToPage {
 
     public static void addQRCodeToPage(Document document,
                                        List<String> qrCodes,
                                        int currentPage,
                                        int qrCodesPerPage,
-                                       float resolution) throws IOException, DocumentException {
+                                       float resolution,
+                                       float marginTop,
+                                       float marginBottom,
+                                       float marginLeft,
+                                       float marginRight) throws IOException, DocumentException {
         // Nustatome puslapio dydį
         Rectangle pageSize = new Rectangle(595, 842); // A4 formatas: 595 x 842 taškai
         document.setPageSize(pageSize);
 
         // Nustatome puslapio antraštes
-        document.setMargins(20, 20, 20, 10);
+        document.setMargins(marginLeft,marginRight,marginTop,marginBottom);
 
         // Skaičiuojame, kiek eilučių ir stulpelių tilps į puslapį
         int rows = 8; //  eilutės
         int columns = 8; // stulpeliai
-
 
 
         // Nustatome QR kodų dydį

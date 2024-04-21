@@ -4,6 +4,7 @@ package lt.jono.qr_gen.page;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,8 +16,9 @@ import static lt.jono.qr_gen.page.AddQRCodeToPage.addQRCodeToPage;
 public class WriteQRCodeToPage {
 
 
-
-    public  void writeQRCodePDF(List<String> qrCodes, String outputFileName, int resolution) {
+    public void writeQRCodePDF(List<String> qrCodes,
+                               String outputFileName,
+                               int resolution, int marginTop, int marginBottom, int marginLeft, int marginRight) throws  IOException , DocumentException{
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, Files.newOutputStream(Paths.get(outputFileName)));
@@ -25,7 +27,7 @@ public class WriteQRCodeToPage {
             int totalPages = (int) Math.ceil((double) qrCodes.size() / qrCodesPerPage);
             for (int currentPage = 0; currentPage < totalPages; currentPage++) {
                 document.newPage();
-                addQRCodeToPage(document, qrCodes, currentPage, qrCodesPerPage, resolution);
+                addQRCodeToPage(document, qrCodes, currentPage, qrCodesPerPage, resolution, marginTop, marginBottom, marginLeft, marginRight);
             }
             document.close();
             System.out.println("PDF failas su QR kodais sugeneruotas sėkmingai: " + outputFileName);
