@@ -22,10 +22,10 @@ AddQRCodeToPage {
         document.setPageSize(pageSize);
 
         // Nustatome puslapio antraštes
-        document.setMargins(40, 40, 40, 40);
+        document.setMargins(20, 20, 20, 10);
 
         // Skaičiuojame, kiek eilučių ir stulpelių tilps į puslapį
-        int rows = 9; //  eilutės
+        int rows = 8; //  eilutės
         int columns = 8; // stulpeliai
 
 

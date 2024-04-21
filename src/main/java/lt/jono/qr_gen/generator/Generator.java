@@ -7,14 +7,44 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.Properties;
 
 import static lt.jono.qr_gen.utils.DialogBoxHelper.qrGeneratedError;
 
 public class Generator {
+    private static int frameWidth;
+    private static int qrWidth;
+    private static int qrHeight;
+    private static int margin;
+    private static int textHeight;
+    private static int arcWidth;
+    private static int arcHeight;
+    private static int fontSize;
+
+    static {
+        try {
+            InputStream input = Generator.class.getClassLoader().getResourceAsStream("config.properties");
+            if (input == null) {
+                System.out.println("Atsiprašau neina rasti config.properties failo");
+            }
+            Properties prop = new Properties();
+            prop.load(input);
+            frameWidth = Integer.parseInt(prop.getProperty("frameWidth"));
+            qrWidth = Integer.parseInt(prop.getProperty("qrWidth"));
+            qrHeight = Integer.parseInt(prop.getProperty("qrHeight"));
+            margin = Integer.parseInt(prop.getProperty("margin"));
+            textHeight = Integer.parseInt(prop.getProperty("textHeight"));
+            arcWidth = Integer.parseInt(prop.getProperty("arcWidth"));
+            arcHeight = Integer.parseInt(prop.getProperty("arcHeight"));
+            fontSize = Integer.parseInt(prop.getProperty("fontSize"));
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
     public static void generateQRCode(String series, int number) {
         String code = series + String.format("%06d", number); // įtraukiame serijos ir numeracijos informaciją į QR kodą
         try {
@@ -22,11 +52,6 @@ public class Generator {
             byte[] byteArray = byteArrayOutputStream.toByteArray();
             BufferedImage qrImage = ImageIO.read(new ByteArrayInputStream(byteArray));
 
-            int frameWidth = 2; //  pikselių rėmelis
-            int qrWidth = 300; // 2 cm plotis (200 pikselių prie 100 dpi)
-            int qrHeight = 310; // 2 cm aukštis (200 pikselių prie 100 dpi)
-            int margin = 1; // 5 mm tarpas viršuje, apačioje ir tekstui
-            int textHeight = 90; // Teksto aukštis
             int totalWidth = qrWidth + 2 * frameWidth;
             int totalHeight = qrHeight + 2 * frameWidth + textHeight + 2 * margin;
 
@@ -36,12 +61,9 @@ public class Generator {
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, totalWidth, totalHeight);
 
-            // QR kodas su užapvalintais kampais
-            int arcWidth = 50;
-            int arcHeight = 50;
-            Shape clip = new RoundRectangle2D.Float(frameWidth, frameWidth , qrWidth, qrHeight, arcWidth, arcHeight);
+            Shape clip = new RoundRectangle2D.Float(frameWidth, frameWidth, qrWidth, qrHeight, arcWidth, arcHeight);
             g.setClip(clip);
-            g.drawImage(qrImage, frameWidth, frameWidth , qrWidth, qrHeight, null);
+            g.drawImage(qrImage, frameWidth, frameWidth, qrWidth, qrHeight, null);
             g.setClip(null);
 
             // Rėmelis
@@ -50,7 +72,7 @@ public class Generator {
 
             // Serijos ir numeracijos informacija
             g.setColor(Color.BLACK);
-            Font font = new Font("Arial", Font.BOLD, 40);
+            Font font = new Font("Arial", Font.BOLD, fontSize);
             g.setFont(font);
             g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HBGR);
             FontMetrics fm = g.getFontMetrics();
