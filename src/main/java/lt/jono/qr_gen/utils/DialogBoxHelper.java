@@ -20,6 +20,9 @@ public class DialogBoxHelper {
     public static void numericalError() {
         showAlert("Klaida:", "KALAIDA", "įvedėte ne skaičių!!");
     }
+    public static void qrGeneratedError(String message) {
+        showAlert("Klaida:" ,null,"Klaida kuriant QR kodą:");
+    }
 
     private static void showAlert(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

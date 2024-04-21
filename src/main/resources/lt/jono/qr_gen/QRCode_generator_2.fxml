@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="lt.jono.qr_gen.controller.QRGenController">
+    <MenuBar VBox.vgrow="NEVER">
+        <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" text="Quit"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+            <MenuItem mnemonicParsing="false" text="Ape QR generatoriu"/>
+        </Menu>
+    </MenuBar>
+    <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true"
+               VBox.vgrow="ALWAYS">
+        <AnchorPane prefHeight="291.0" prefWidth="219.0" style="-fx-border-color: lightgrey;">
+            <Label alignment="CENTER" layoutX="16.0" layoutY="64.0" minWidth="60.0" prefHeight="27.0"
+                   prefWidth="195.0" style="&#10;" text="Serial" textAlignment="CENTER">
+                <font>
+                    <Font size="18.0" fx:id="x1"/>
+                </font>
+                <textFill>
+                    <Color red="0.624" green="0.624" blue="0.624" fx:id="x2"/>
+                </textFill>
+            </Label>
+            <Label alignment="CENTER" layoutX="16.0" layoutY="150.0" minWidth="60.0" prefHeight="27.0"
+                   prefWidth="195.0" style="&#10;" text="Pradžios reikšmė" textAlignment="CENTER"
+            >
+                <font>
+                    <Font size="18.0" fx:id="x11"/>
+                </font>
+                <textFill>
+                    <Color red="0.624" green="0.624" blue="0.624" fx:id="x21"/>
+                </textFill>
+            </Label>
+            <Label alignment="CENTER" layoutX="16.0" layoutY="242.0" minWidth="60.0" prefHeight="27.0"
+                   prefWidth="195.0" style="&#10;" text="Pabaigos reikšmė" textAlignment="CENTER"
+                   wrapText="false">
+                <font>
+                    <Font size="18.0" fx:id="x111"/>
+                </font>
+                <textFill>
+                    <Color red="0.624" green="0.624" blue="0.624" fx:id="x211"/>
+                </textFill>
+            </Label>
+            <TextField fx:id="seriesField" alignment="TOP_CENTER" layoutX="39.0" layoutY="91.0"
+                       promptText="AAA"/>
+            <TextField fx:id="fromField" alignment="TOP_CENTER" layoutX="39.0" layoutY="177.0"
+                       promptText="123"/>
+            <TextField fx:id="toField" alignment="TOP_CENTER" layoutX="39.0" layoutY="269.0" promptText="456"/>
+            <SplitMenuButton fx:id="resolutionMenuButton" layoutX="37.0" layoutY="358.0" mnemonicParsing="false"
+                             prefHeight="25.0" prefWidth="149.0" text="Rezoliucija">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleResolutionMenuItemClicked"
+                              text="QR rezoliucija 60 pix" userData="60"/>
+                    <MenuItem mnemonicParsing="false" onAction="#handleResolutionMenuItemClicked"
+                              text="QR rezoliucija 70 pix" userData="70"/>
+                </items>
+            </SplitMenuButton>
+            <Label alignment="CENTER" layoutX="16.0" layoutY="331.0" minWidth="60.0" prefHeight="27.0"
+                   prefWidth="195.0" style="&#10;" text="Rezoliucija" textAlignment="CENTER" wrapText="false">
+                <font>
+                    <Font size="18.0" fx:id="x1111"/>
+                </font>
+                <textFill>
+                    <Color red="0.624" green="0.624" blue="0.624" fx:id="x2111"/>
+                </textFill>
+            </Label>
+            <Label alignment="CENTER" layoutX="16.0" layoutY="1.0" minWidth="60.0" prefHeight="27.0"
+                   prefWidth="195.0" style="&#10;" text="QR kodo nustatymai" textAlignment="CENTER"
+                   textFill="#575151" wrapText="false">
+                <font>
+                    <Font size="18.0" fx:id="x12"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+            <content>
+                <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+                    <children>
+                        <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="1.0" prefHeight="27.0"
+                               prefWidth="403.0" style="&#10;" text="PDF puslapio nustatymai" textAlignment="CENTER"
+                               textFill="#575151" wrapText="false"/>
+                        <Label layoutX="38.0" layoutY="41.0" text="Viršutinė paraštė"/>
+                        <ChoiceBox layoutX="14.0" layoutY="58.0" prefHeight="27.0" prefWidth="136.0"/>
+                        <Label layoutX="41.0" layoutY="101.0" text="Apatinė paraštė"/>
+                        <ChoiceBox layoutX="14.0" layoutY="118.0" prefHeight="27.0" prefWidth="136.0"/>
+                        <Label layoutX="48.0" layoutY="166.0" text="Kairė paraštė"/>
+                        <ChoiceBox layoutX="14.0" layoutY="183.0" prefHeight="27.0" prefWidth="136.0"/>
+                        <Label layoutX="46.0" layoutY="229.0" text="Dešinė parštė"/>
+                        <ChoiceBox layoutX="14.0" layoutY="246.0" prefHeight="27.0" prefWidth="136.0"/>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+        <AnchorPane>
+            <children>
+                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="1.0" prefHeight="27.0"
+                       prefWidth="195.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="#575151"
+                       wrapText="false"/>
+                <Button layoutX="46.0" layoutY="448.0" mnemonicParsing="false" onAction="#generateButtonClicked"
+                        prefHeight="25.0" prefWidth="130.0" text="GENERUOTI"/>
+                <Button layoutX="46.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleExitButton"
+                        prefHeight="25.0" prefWidth="130.0" text="IŠEITI"/>
+            </children>
+        </AnchorPane>
+    </SplitPane>
+    <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+        <children>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+                <font>
+                    <Font size="11.0" fx:id="x3"/>
+                </font>
+                <textFill>
+                    <Color red="0.625" green="0.625" blue="0.625" fx:id="x4"/>
+                </textFill>
+            </Label>
+            <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS">
+                <children>
+                    <ProgressBar prefHeight="18.0" prefWidth="776.0" progress="0.0"/>
+                </children>
+            </Pane>
+            <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER"/>
+        </children>
+        <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+        </padding>
+    </HBox>
+</VBox>

@@ -10,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.System.out;
+import static lt.jono.qr_gen.utils.DialogBoxHelper.qrGeneratedError;
 
 
 public class Generator {
@@ -55,9 +56,10 @@ public class Generator {
              * išsaugojame kombinuotą paveikslėlį su serijos ir numeracijos informacija
              */
             ImageIO.write(combined, "PNG", file);
-            out.println("QR kodas su serija " + series + " ir numeracija " + number + " sugeneruotas: " + file.getAbsolutePath());
+            //out.println("QR kodas su serija " + series + " ir numeracija " + number + " sugeneruotas: " + file.getAbsolutePath());
         } catch (IOException e) {
-            out.println("Klaida kuriant QR kodą: " + e.getMessage());
+            qrGeneratedError(e.getMessage());
+            //out.println("Klaida kuriant QR kodą: " + e.getMessage());
         }
 
     }

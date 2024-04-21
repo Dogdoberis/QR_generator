@@ -38,7 +38,7 @@ public class QRGenController {
         int resolution = Integer.parseInt(menuItem.getUserData().toString().trim());
         int defaultResolution = 60;
         selectedResolution = (selectedResolution == 0) ? defaultResolution : selectedResolution;
-        resolutionMenuButton.setText("Pasirinkta rezoliucija: " + resolution + " pix");
+        resolutionMenuButton.setText("Rezoliucija: " + resolution + " pix");
         selectedResolution = resolution;
     }
 

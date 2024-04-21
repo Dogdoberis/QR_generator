@@ -13,8 +13,9 @@ import java.util.Objects;
 public class QRCodeCenerator extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("qrcodegenerator-view.fxml")));
-        Scene scene = new Scene(root, 300, 250);
+        //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("qrcodegenerator-view.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("QRCode_generator_2.fxml")));
+        Scene scene = new Scene(root);
         primaryStage.setTitle("QR Code Generator");
         primaryStage.setScene(scene);
         primaryStage.show();
