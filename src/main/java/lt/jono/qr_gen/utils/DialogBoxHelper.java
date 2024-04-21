@@ -21,8 +21,11 @@ public class DialogBoxHelper {
         showAlert("Klaida:", "KALAIDA", "įvedėte ne skaičių!!");
     }
     public static void qrGeneratedError(String message) {
-        showAlert("Klaida:" ,null,"Klaida kuriant QR kodą:");
+        showAlert("Klaida:" ,message,"Klaida kuriant QR kodą:");
     }
+//    public static  void resolutionSelection(String message) {
+//        showAlert("Klaida:" ,message,"Resoliucijia: ");
+//    }
 
     private static void showAlert(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

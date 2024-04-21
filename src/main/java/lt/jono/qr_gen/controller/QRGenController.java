@@ -35,8 +35,8 @@ public class QRGenController {
     @FXML
     private void handleResolutionMenuItemClicked(ActionEvent event) {
         MenuItem menuItem = ((MenuItem) event.getTarget());
-        int resolution = Integer.parseInt(menuItem.getUserData().toString().trim());
         int defaultResolution = 60;
+        int resolution = Integer.parseInt(menuItem.getUserData().toString().trim());
         selectedResolution = (selectedResolution == 0) ? defaultResolution : selectedResolution;
         resolutionMenuButton.setText("Rezoliucija: " + resolution + " pix");
         selectedResolution = resolution;

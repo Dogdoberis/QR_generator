@@ -8,7 +8,6 @@ import java.util.List;
 
 import static lt.jono.qr_gen.utils.FileEraser.deleteFiles;
 
-
 public class PngTpPDF {
     public static void pngTpPDF(int resolution) {
 
