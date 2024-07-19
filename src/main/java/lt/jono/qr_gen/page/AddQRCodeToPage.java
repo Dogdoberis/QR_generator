@@ -5,7 +5,6 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
 import lt.jono.qr_gen.utils.QRCodeLayoutHelper;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -50,5 +49,6 @@ public class AddQRCodeToPage {
             image.setAbsolutePosition(x, y);
             document.add(image);
         }
+
     }
 }

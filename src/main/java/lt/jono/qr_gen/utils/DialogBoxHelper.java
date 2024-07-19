@@ -6,6 +6,10 @@ import javafx.scene.control.ButtonType;
 
 public class DialogBoxHelper {
 
+    public static void generalEror(){
+        showAlert("Sistemos Klaida",null,"!Sistemos Klaida programa nustojo veikti!");
+    }
+
     public static void generateDialogBox() {
         showAlert("Pasirinkimo trūkumas",null, "QR kodqi negali būti sugeneruoti truksta parametrų!");
     }
