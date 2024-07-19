@@ -7,14 +7,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="300.0" prefWidth="250.0" spacing="10.0" xmlns="http://javafx.com/javafx/17"
+<VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0" spacing="10.0" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="lt.jono.qr_gen.controller.QRGenController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <TextField fx:id="seriesField" alignment="TOP_CENTER" prefHeight="25.0" prefWidth="150.0" promptText="seriesField"/>
-    <TextField fx:id="fromField" alignment="TOP_CENTER" prefHeight="25.0" prefWidth="150.0" promptText="fromField"/>
-    <TextField fx:id="toField" alignment="TOP_CENTER" promptText="toField"/>
+    <TextField fx:id="seriesField" alignment="TOP_CENTER" prefHeight="25.0" prefWidth="150.0" promptText="serija"/>
+    <TextField fx:id="fromField" alignment="TOP_CENTER" prefHeight="25.0" prefWidth="150.0" promptText="nuo"/>
+    <TextField fx:id="toField" alignment="TOP_CENTER" promptText="iki"/>
     <SplitMenuButton fx:id="resolutionMenuButton" mnemonicParsing="false" popupSide="TOP" prefHeight="25.0"
                      prefWidth="260.0" text="Pasirinkti qr rezoliucija">
         <items>

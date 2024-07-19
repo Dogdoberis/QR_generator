@@ -13,10 +13,25 @@ import java.util.ResourceBundle;
 
 import static lt.jono.qr_gen.generator.GenerateQRCodes.generateQRCodes;
 import static lt.jono.qr_gen.utils.DialogBoxHelper.*;
+import static lt.jono.qr_gen.utils.QRCodeLayoutHelper.getRowsAndColumns;
 import static lt.jono.qr_gen.utils.Validador.isValidNumber;
 
 public class QRGenController implements Initializable {
+
     private int selectedResolution;
+
+    @FXML
+    public Label qrCodes;
+
+    @FXML
+    public Label totalPages;
+
+    @FXML
+    public Label qrCodesPerPage;
+
+    @FXML
+    public Label qrCodesInLastPage;
+
 
     @FXML
     private Spinner<Integer> marginTop;
@@ -52,12 +67,70 @@ public class QRGenController implements Initializable {
     @FXML
     private void handleResolutionMenuItemClicked(ActionEvent event) {
         MenuItem menuItem = ((MenuItem) event.getTarget());
-        int defaultResolution = 60;
         int resolution = Integer.parseInt(menuItem.getUserData().toString().trim());
-        selectedResolution = (selectedResolution == 0) ? defaultResolution : selectedResolution;
         resolutionMenuButton.setText("Rezoliucija: " + resolution + " pix");
         selectedResolution = resolution;
+        labelQRCodes();
+        labePages();
+        qrCodesPerPage();
+        qrCodesInLastPage();
+
     }
+
+    @FXML
+    private void labelQRCodes() {
+        try {
+            int x = Integer.parseInt(fromField.getText());
+            int y = Integer.parseInt(toField.getText());
+            int codes = y - x + 1;
+            qrCodes.setText(String.valueOf(codes));
+        } catch (NumberFormatException e) {
+            generateDialogBox();
+        }
+    }
+
+    @FXML
+    private void labePages() {
+        try {
+            int x = Integer.parseInt(fromField.getText());
+            int y = Integer.parseInt(toField.getText());
+            int rezoliucija = selectedResolution;
+            int[] rowsAndColumns = getRowsAndColumns((float) rezoliucija);
+            int rows = rowsAndColumns[0];
+            int columns = rowsAndColumns[1];
+            int pages = Math.abs((x + 1 - y) / (rows * columns)) + 1;
+            totalPages.setText(String.valueOf(pages));
+        } catch (NumberFormatException e) {
+            generateDialogBox();
+        }
+    }
+
+    @FXML
+    private void qrCodesPerPage() {
+        int[] rowsAndColumns = getRowsAndColumns((float) selectedResolution);
+        int rows = rowsAndColumns[0];
+        int columns = rowsAndColumns[1];
+        int qrCodes = rows * columns;
+        qrCodesPerPage.setText(String.valueOf(qrCodes));
+    }
+
+    @FXML
+    private void qrCodesInLastPage() {
+        try {
+            int x = Integer.parseInt(fromField.getText());
+            int y = Integer.parseInt(toField.getText());
+            int[] rowsAndColumns = getRowsAndColumns((float) selectedResolution);
+            int rows = rowsAndColumns[0];
+            int columns = rowsAndColumns[1];
+            int pages = Math.abs((x + 1 - y) / (rows * columns)) + 1;
+            int qrCodesLeftover = (pages * (rows * columns)) - (y - x + 1);
+            qrCodesInLastPage.setText(String.valueOf(qrCodesLeftover));
+
+        }catch (Exception e) {
+            generateDialogBox();
+        }
+    }
+
 
     @FXML
     private void generateButtonClicked() {
@@ -67,6 +140,10 @@ public class QRGenController implements Initializable {
         try {
             startNumber = Integer.parseInt(fromField.getText());
             endNumber = Integer.parseInt(toField.getText());
+            if (selectedResolution == 0) {
+                resolutionSelection();
+                return;
+            }
             int resolution = selectedResolution;
             int marginTopValue = marginTop.getValue();
             int marginBottomValue = marginBottom.getValue();
@@ -94,14 +171,18 @@ public class QRGenController implements Initializable {
         }
     }
 
-@Override
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setupSpinne(marginTop, 10,50,1);
-        setupSpinne(marginBottom, 10,50,1);
-        setupSpinne(marginLeft, 10,50,1);
-        setupSpinne(marginRight, 10,50,1);
+        setupSpinne(marginTop, 60, 20);
+        setupSpinne(marginBottom, 90, 50);
+        setupSpinne(marginLeft, 60, 35);
+        setupSpinne(marginRight, 60, 35);
+    }
+
+    private void setupSpinne(Spinner<Integer> spinner, int max, int initialValue) {
+        spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(10, max, initialValue, 1));
+
+    }
 }
-private void setupSpinne(Spinner<Integer> spinner, int min, int max, int step) {
-        spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, step));
-}
-}
+
+

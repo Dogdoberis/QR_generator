@@ -18,16 +18,17 @@ public class WriteQRCodeToPage {
 
     public void writeQRCodePDF(List<String> qrCodes,
                                String outputFileName,
-                               int resolution, int marginTop, int marginBottom, int marginLeft, int marginRight) throws  IOException , DocumentException{
+                               int resolution, int marginTop, int marginBottom, int marginLeft, int marginRight) {
+
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, Files.newOutputStream(Paths.get(outputFileName)));
             document.open();
-            int qrCodesPerPage = 80;
-            int totalPages = (int) Math.ceil((double) qrCodes.size() / qrCodesPerPage);
+            int totalPages = (int) (double) qrCodes.size(); // qrCodesPerPage);
             for (int currentPage = 0; currentPage < totalPages; currentPage++) {
                 document.newPage();
-                addQRCodeToPage(document, qrCodes, currentPage, qrCodesPerPage, resolution, marginTop, marginBottom, marginLeft, marginRight);
+                addQRCodeToPage(document, qrCodes, currentPage, resolution, marginTop, marginBottom, marginLeft, marginRight);
+
             }
             document.close();
             System.out.println("PDF failas su QR kodais sugeneruotas sėkmingai: " + outputFileName);
@@ -35,4 +36,5 @@ public class WriteQRCodeToPage {
             System.out.println("Klaida kuriant PDF failą: " + e.getMessage());
         }
     }
+
 }
