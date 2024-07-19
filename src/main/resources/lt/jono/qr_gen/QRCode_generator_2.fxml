@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lt.jono.qr_gen.controller.QRGenController">
@@ -60,7 +61,11 @@
             <SplitMenuButton fx:id="resolutionMenuButton" layoutX="37.0" layoutY="358.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Rezoliucija">
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#handleResolutionMenuItemClicked" text="QR rezoliucija 70 pix" userData="70" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleResolutionMenuItemClicked" text="QR rezoliucija 75 pix" userData="75" />
                     <MenuItem mnemonicParsing="false" onAction="#handleResolutionMenuItemClicked" text="QR rezoliucija 80 pix" userData="80" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleResolutionMenuItemClicked" text="QR rezoliucija 85 pix" userData="85" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleResolutionMenuItemClicked" text="QR rezoliucija 90 pix" userData="90" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleResolutionMenuItemClicked" text="QR rezoliucija 95 pix" userData="95" />
                 </items>
             </SplitMenuButton>
             <Label alignment="CENTER" layoutX="16.0" layoutY="331.0" minWidth="60.0" prefHeight="27.0" prefWidth="195.0" style="&#10;" text="Rezoliucija" textAlignment="CENTER" wrapText="false">
@@ -71,7 +76,7 @@
                     <Color red="0.624" green="0.624" blue="0.624" fx:id="x2111" />
                 </textFill>
             </Label>
-            <Label alignment="CENTER" layoutX="16.0" layoutY="1.0" minWidth="60.0" prefHeight="27.0" prefWidth="195.0" style="&#10;" text="QR kodo nustatymai" textAlignment="CENTER" textFill="#575151" wrapText="false">
+            <Label alignment="CENTER" layoutX="16.0" layoutY="1.0" minWidth="60.0" prefHeight="27.0" prefWidth="195.0" style="&#10;" text="QR kodo parametrai" textAlignment="CENTER" textFill="#575151" wrapText="false">
                 <font>
                     <Font size="18.0" fx:id="x12" />
                 </font>
@@ -81,15 +86,17 @@
             <content>
                 <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
                     <children>
-                        <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="1.0" prefHeight="27.0" prefWidth="403.0" style="&#10;" text="PDF puslapio nustatymai" textAlignment="CENTER" textFill="#575151" wrapText="false" />
-                        <Label layoutX="38.0" layoutY="41.0" text="Viršutinė paraštė" />
-                        <Label layoutX="41.0" layoutY="101.0" text="Apatinė paraštė" />
-                        <Label layoutX="48.0" layoutY="166.0" text="Kairė paraštė" />
-                        <Label layoutX="46.0" layoutY="229.0" text="Dešinė parštė" />
-                  <Spinner fx:id="marginTop" layoutX="38.0" layoutY="58.0" prefHeight="25.0" prefWidth="88.0" />
-                  <Spinner fx:id="marginBottom" layoutX="38.0" layoutY="118.0" prefHeight="25.0" prefWidth="88.0" />
-                  <Spinner fx:id="marginLeft" layoutX="39.0" layoutY="183.0" prefHeight="25.0" prefWidth="88.0" />
-                  <Spinner fx:id="marginRight" layoutX="39.0" layoutY="246.0" prefHeight="25.0" prefWidth="88.0" />
+                        <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="1.0" prefHeight="27.0" prefWidth="403.0" style="&#10;" text="Puslapio parametrai" textAlignment="CENTER" textFill="#575151" wrapText="false" />
+                        <Label layoutX="171.0" layoutY="28.0" text="Viršutinė paraštė" />
+                        <Label layoutX="173.0" layoutY="273.0" text="Apatinė paraštė" />
+                        <Label layoutX="49.0" layoutY="145.0" text="Kairė paraštė" />
+                        <Label layoutX="315.0" layoutY="145.0" text="Dešinė parštė" />
+                  <Spinner fx:id="marginTop" layoutX="172.0" layoutY="46.0" prefHeight="25.0" prefWidth="88.0" />
+                  <Spinner fx:id="marginBottom" layoutX="171.0" layoutY="290.0" prefHeight="25.0" prefWidth="88.0" />
+                  <Spinner fx:id="marginLeft" layoutX="40.0" layoutY="162.0" prefHeight="25.0" prefWidth="88.0" />
+                  <Spinner fx:id="marginRight" layoutX="307.0" layoutY="162.0" prefHeight="25.0" prefWidth="88.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e9f1f8" height="200.0" layoutX="142.0" layoutY="75.0" stroke="BLACK" strokeType="INSIDE" width="149.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dee1e3" height="181.0" layoutX="157.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="119.0" />
                     </children>
                 </AnchorPane>
             </content>
@@ -99,6 +106,49 @@
                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="1.0" prefHeight="27.0" prefWidth="195.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="#575151" wrapText="false" />
                 <Button layoutX="46.0" layoutY="448.0" mnemonicParsing="false" onAction="#generateButtonClicked" prefHeight="25.0" prefWidth="130.0" text="GENERUOTI" />
                 <Button layoutX="46.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="25.0" prefWidth="130.0" text="IŠEITI" />
+            <Label fx:id="qrCodes" alignment="CENTER" layoutX="13.0" layoutY="59.0" prefHeight="27.0" prefWidth="195.0" style="-fx-border-color: black;" textAlignment="CENTER" textFill="#575151" wrapText="false">
+               <font>
+                  <Font size="18.0" fx:id="x13" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="totalPages" alignment="CENTER" layoutX="13.0" layoutY="107.0" prefHeight="27.0" prefWidth="195.0" style="-fx-border-color: black;" textAlignment="CENTER" textFill="#575151" wrapText="false">
+               <font>
+                  <Font size="18.0" fx:id="x131" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="13.0" layoutY="43.0" prefHeight="16.0" prefWidth="195.0" style="&#10;" text="QR kodų iš viso " textAlignment="CENTER" textFill="#575151" wrapText="false">
+               <font>
+                  <Font size="11.0" fx:id="x14" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="13.0" layoutY="91.0" prefHeight="16.0" prefWidth="195.0" style="&#10;" text="Lapų keikis" textAlignment="CENTER" textFill="#575151" wrapText="false">
+               <font>
+                  <Font size="11.0" fx:id="x141" />
+               </font>
+            </Label>
+            <Label fx:id="qrCodesPerPage" alignment="CENTER" layoutX="13.0" layoutY="160.0" prefHeight="27.0" prefWidth="195.0" style="-fx-border-color: black;" textAlignment="CENTER" textFill="#575151" wrapText="false">
+               <font>
+                  <Font size="18.0" fx:id="x1311" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="13.0" layoutY="144.0" prefHeight="16.0" prefWidth="195.0" style="&#10;" text="QR kodų kiekis lape" textAlignment="CENTER" textFill="#575151" wrapText="false">
+               <font>
+                  <Font size="11.0" fx:id="x1411" />
+               </font>
+            </Label>
+            <Label fx:id="qrCodesInLastPage" alignment="CENTER" layoutX="13.0" layoutY="211.0" prefHeight="27.0" prefWidth="195.0" style="-fx-border-color: black;" textAlignment="CENTER" textFill="#575151" wrapText="false">
+               <font>
+                  <Font size="18.0" fx:id="x13111" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="13.0" layoutY="195.0" prefHeight="16.0" prefWidth="195.0" style="&#10;" text="QR kodų trūlumas iki pilno lapo" textAlignment="CENTER" textFill="#575151" wrapText="false">
+               <font>
+                  <Font size="11.0" fx:id="x1412" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </SplitPane>
@@ -114,7 +164,7 @@
             </Label>
             <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS">
                 <children>
-                    <ProgressBar prefHeight="18.0" prefWidth="776.0" progress="0.0" />
+                    <ProgressBar fx:id="progressBar" prefHeight="18.0" prefWidth="776.0" progress="0.0" />
                 </children>
             </Pane>
             <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />

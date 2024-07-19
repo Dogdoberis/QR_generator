@@ -3,10 +3,12 @@ package lt.jono.qr_gen.utils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
-import javax.swing.*;
 
 public class DialogBoxHelper {
 
+    public static void generateDialogBox() {
+        showAlert("Pasirinkimo trūkumas",null, "QR kodqi negali būti sugeneruoti truksta parametrų!");
+    }
     public static void showQRGeneratedDialog() {
         showAlert("QR Kodai Sugeneruoti", null, "QR kodai buvo sėkmingai sugeneruoti!");
     }

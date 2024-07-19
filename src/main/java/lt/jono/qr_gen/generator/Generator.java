@@ -45,7 +45,7 @@ public class Generator {
             g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HBGR);
             FontMetrics fm = g.getFontMetrics();
             int textX = (totalWidth - fm.stringWidth(code)) / 2;
-            int textY = frameWidth + qrHeight + margin + fm.getAscent() / 4;
+            int textY = frameWidth + qrHeight + margin + fm.getAscent() / 5000;
 
             g.drawString(code, textX, textY);
 
