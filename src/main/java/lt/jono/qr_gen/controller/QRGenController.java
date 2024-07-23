@@ -32,7 +32,6 @@ public class QRGenController implements Initializable {
     @FXML
     public Label qrCodesInLastPage;
 
-
     @FXML
     private Spinner<Integer> marginTop;
 

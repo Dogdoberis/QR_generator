@@ -22,7 +22,8 @@ public class WriteQRCodeToPage {
 
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, Files.newOutputStream(Paths.get(outputFileName)));
+            PdfWriter writer = PdfWriter.getInstance(document, Files.newOutputStream(Paths.get(outputFileName)));
+            //writer.setPageEvent(new PageNumeration());
             document.open();
             int totalPages = (int) (double) qrCodes.size(); // qrCodesPerPage);
             for (int currentPage = 0; currentPage < totalPages; currentPage++) {
